@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+
+
+@layer components {
+  .welcome-banner {
+    @apply bg-amber-200 justify-center flex;
+
+    & img {
+    @apply w-full ;
+  }
+  }
+
+  
+
+}
