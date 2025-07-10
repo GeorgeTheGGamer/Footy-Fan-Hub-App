@@ -17,4 +17,4 @@ FanTracker is a React-based application that allows sports fans to track their f
 - **React** for building the user interface
 - **Tailwind CSS** for styling and responsive design
 - **Sports API** to retrieve live team data
-- **Axios / Fetch API** to handle HTTP requests
+
