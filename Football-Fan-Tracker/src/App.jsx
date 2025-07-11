@@ -1,17 +1,15 @@
 import React from 'react'
+import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
+import Homepage from './components/homepage'
+import Teampage from './components/teampage'
 
 const App = () => {
   return (
-    <main>
-      <header className='welcome-banner'>
-        <img src="./welcome-banner.jpg" alt="Welcome back Drop" />
-        <h1>Welcome to Footy Fan Hub</h1>
-        <p>Where you can follow your favourite team on the go</p>
-      </header>
-      <section>
-        <button>Select your team</button>
-      </section>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route  path='/' element={<Homepage />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

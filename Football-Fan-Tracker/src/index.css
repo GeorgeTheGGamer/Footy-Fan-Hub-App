@@ -2,13 +2,11 @@
 
 
 
+
 @layer components {
   .welcome-banner {
-    @apply bg-amber-200 justify-center flex;
-
-    & img {
-    @apply w-full ;
-  }
+    /* Interactive welcone banner Design  */
+  @apply bg-[url(/welcome-banner.jpg)] md:bg[url(/welcome-banner-large.jpg)] h-[50vh] bg-cover bg-center bg-no-repeat;
   }
 
   
