@@ -6,7 +6,8 @@
 @layer components {
   .welcome-banner {
     /* Interactive welcone banner Design  */
-  @apply bg-[url(/welcome-banner.jpg)] md:bg[url(/welcome-banner-large.jpg)] h-[50vh] bg-cover bg-center bg-no-repeat;
+    @apply bg-[url(/welcome-banner.jpg)] h-[50vh] bg-cover bg-center bg-no-repeat;
+
   }
 
   
