@@ -3,6 +3,8 @@
 @theme {
   /* Title Font family */
   --font-family-text: "Inter", system-ui, sans-serif;  
+  --color-light-100: #cecefb;
+  --color-light-200: #a8b5db;
 }
 
 @layer components {
@@ -24,7 +26,6 @@
 
         & span {
           @apply bg-gradient-to-t from-sky-500 to-indigo-500 bg-clip-text text-transparent italic;
-
         }
       }
     }
@@ -34,9 +35,44 @@
     /* Take Up the remaining area of the screen */
     @apply h-[calc(100vh-60vh)] min-h-[40vh] bg-gradient-to-t from-sky-500 to-indigo-500 flex justify-center items-center;
 
-    & button {
+    /* Target direct child of the button-section element */
+    & > button {
       @apply bg-gradient-to-bl from-violet-500 to-fuchsia-500 px-6 md:px-10 lg:px-14 py-4 md:py-6 lg:py-8 text-xl rounded-lg text-white font-medium transition-all duration-300 ease-in-out hover:bg-gradient-to-bl hover:from-emerald-500 hover:to-teal-500 hover:scale-105 hover:shadow-lg cursor-pointer;
       font-family: var(--font-family-text);
+    }
+  }
+
+  .team-finder {
+    @apply bg-white absolute z-50 rounded-lg shadow-xl w-96 h-80 md:w-[600px] md:h-96 lg:w-[700px] lg:h-[500px] p-4;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    & header {
+      @apply flex justify-between items-center mb-4;
+
+      & > button {
+        @apply bg-gradient-to-bl from-red-600 to-red-400 px-3 py-2 text-lg rounded-lg text-white font-medium transition-all duration-300 ease-in-out hover:bg-gradient-to-bl hover:from-red-400 hover:to-red-200 hover:scale-105 hover:shadow-lg cursor-pointer flex justify-center items-center  ;
+        font-family: var(--font-family-text);
+
+      }
+    }
+  }
+
+  .search {
+    @apply w-full bg-gray-100 px-4 py-2 rounded-lg max-w-md;
+
+    & div {
+      @apply relative flex items-center;
+    }
+
+    & img {
+      @apply absolute left-2 h-5 w-5;
+    }
+
+    & input {
+      @apply w-full bg-transparent py-2 pl-10 pr-4 text-base text-gray-700 placeholder-gray-400 outline-none border-none;
+      
     }
   }
 }
