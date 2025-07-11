@@ -4,11 +4,11 @@ const homepage = () => {
   return (
     <main>
       <header className='welcome-banner'>
-        <img src="./welcome-banner.jpg" alt="Welcome back Drop" />
-        <h1>Welcome to Footy Fan Hub</h1>
-        <p>Where you can follow your favourite team on the go</p>
+        <div>
+          <h1>Welcome to <span> Footy </span> Fan Hub</h1>
+        </div>
       </header>
-      <section>
+      <section className='button-section'>
         <button>Select your team</button>
       </section>
     </main>

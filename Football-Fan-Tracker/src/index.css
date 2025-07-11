@@ -1,15 +1,40 @@
 @import "tailwindcss";
 
-
-
+@theme {
+  /* Title Font family */
+  --font-family-title: "Inter", system-ui, sans-serif;  
+}
 
 @layer components {
   .welcome-banner {
-    /* Interactive welcone banner Design  */
-    @apply bg-[url(/welcome-banner.jpg)] h-[50vh] bg-cover bg-center bg-no-repeat;
+    /* Interactive welcome banner Design  */
+      @apply bg-[url(/welcome-banner.jpg)] h-[60vh] bg-cover bg-center bg-no-repeat relative flex justify-center items-start;
+  
+    &::after {
+      content: '';
+      @apply absolute inset-0 bg-gradient-to-b from-transparent from-90% to-indigo-500;
+    }
+  
+    & div {
+      & h1 {
+        /* Interactive Title sizes for different windows  */
+        @apply bg-gradient-to-bl from-violet-500 to-fuchsia-500 bg-clip-text text-transparent font-bold text-4xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight;
+        font-family: var(--font-family-title);
 
+        & span {
+          @apply bg-gradient-to-t from-sky-500 to-indigo-500 bg-clip-text text-transparent italic;
+
+        }
+      }
+    }
   }
 
-  
+  .button-section {
+    /* Take Up the remaining area of the screen */
+    @apply h-[calc(100vh-60vh)] min-h-[40vh] bg-gradient-to-t from-sky-500 to-indigo-500 flex justify-center items-center;
 
+    & button {
+      @apply bg-amber-400 px-6 py-3 rounded-lg;
+    }
+  }
 }
