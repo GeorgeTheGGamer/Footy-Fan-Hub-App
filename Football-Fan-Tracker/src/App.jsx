@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
-import Homepage from './components/homepage'
+import Homepage from './components/Homepage'
 import Teampage from './components/teampage'
 
 const App = () => {
