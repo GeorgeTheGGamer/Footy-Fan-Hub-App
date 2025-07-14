@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import Findteam from './Findteam'
 
+
 const Homepage = () => {
   const [isExpanded, setisExpanded] = useState(false)
 
