@@ -31,7 +31,7 @@ const Findteam = ({onClose }) => {
 
     try {
         // Specific team due to API Limitations 😢
-        const endpoint = `${API_BASE_URL}/lookupteam.php?id=133616`
+        const endpoint = `${API_BASE_URL}/lookuptable.php?l=4328`
         const response = await fetch(endpoint, API_OPTIONS)
 
         if (!response.ok) {
@@ -40,7 +40,7 @@ const Findteam = ({onClose }) => {
 
         const data = await response.json();
         console.log(data)
-        setallTeams(data.teams)
+        setallTeams(data.table)
         
     } catch (error) {
         console.log(`Error Fetching teams: ${error}`)
@@ -85,7 +85,6 @@ const Findteam = ({onClose }) => {
                     <Teamcard key={team.idTeam} team={team}/>
                 ))}
                 </ul>)}    
-
         </section>
     </main>
   )
