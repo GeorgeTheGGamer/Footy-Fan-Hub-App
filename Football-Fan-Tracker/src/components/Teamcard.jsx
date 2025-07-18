@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Teamcard = () => {
+const Teamcard = ({team : {strTeam, strBadge}}) => {
   return (
     <div className='team-card'>
         <div>
-            <img src="./spurs-logo.jpg" alt="Spurs Image" />
-            <p>SPURS</p>
+            <img src={strBadge} alt="Spurs Image" />
+            <p>{strTeam}</p>
         </div>
     </div>
   )
