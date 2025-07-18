@@ -4,7 +4,7 @@ const Search = () => {
   return (
     <div className='search'>
       <div>
-        <img src="search.svg" alt="Search Button" />
+        <img src="searcher.svg" alt="Search Button" />
         <input type="text" placeholder='Search for your favourite Team ⚽️'/>
       </div>
     </div>
