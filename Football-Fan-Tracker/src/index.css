@@ -63,7 +63,7 @@
   }
 
   .search {
-    @apply w-full bg-gray-200 px-4 py-2 rounded-lg max-w-md;
+    @apply w-full bg-gray-200 px-4 py-2 rounded-lg mr-4;
 
     & div {
       @apply relative flex items-center;
