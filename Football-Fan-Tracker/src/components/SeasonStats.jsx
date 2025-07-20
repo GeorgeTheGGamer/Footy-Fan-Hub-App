@@ -4,7 +4,14 @@ const SeasonStats = ({team}) => {
 
 
   return (
-    <div>hello there</div>
+    <main className="stats-container">
+      <header className="stats-header">
+        <h3><span>{strSeason}</span> Season Stats</h3>
+      </header>
+      <section>
+
+      </section>
+    </main>
   )
 }
 

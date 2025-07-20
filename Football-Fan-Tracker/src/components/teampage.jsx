@@ -22,7 +22,6 @@ const Teampage = () => {
   const { dateUpdated, idLeague, idStanding, idTeam, intDraw, intGoalDifference, intGoalsAgainst, intGoalsFor, intLoss, intPlayed, intPoints, intRank, intWin, strBadge, strDescription, strForm, strLeague, strSeason, strTeam } = team;
 
   return (
-    <div>
       <main>
         <header className='team-banner'>
           <img src={strBadge} alt="Badge Image" />
@@ -36,8 +35,6 @@ const Teampage = () => {
           <Newsfeed />
         </section>
       </main>
-      
-    </div>
   )
 }
 
