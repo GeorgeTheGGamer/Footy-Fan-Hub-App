@@ -30,8 +30,8 @@ const Teampage = () => {
         </header>
         <section className='content-container'>
           <SeasonStats team={team}/>
-          <Playerviewer teamId={idTeam}/>
           <Fixturelist teamId={idTeam}/>
+          <Playerviewer teamId={idTeam}/>
           <Newsfeed />
         </section>
       </main>

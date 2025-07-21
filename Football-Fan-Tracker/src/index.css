@@ -110,11 +110,11 @@
   @apply flex justify-between p-3 bg-gradient-to-r from-gray-400 to-gray-200;
 
   & img {
-    @apply w-[20];
+    @apply h-[80px] md:h-[125px] pt-3;
   }
 
   & h1 {
-    @apply bg-gradient-to-bl from-gray-950 to-gray-600 bg-clip-text text-transparent font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl tracking-tight m-4;
+    @apply bg-gradient-to-bl from-gray-950 to-gray-600 bg-clip-text text-transparent font-bold text-3xl sm:text-4xl md:text-6xl tracking-tight m-4;
         font-family: var(--font-family-text);
         filter: drop-shadow(6px 6px 6px rgba(0, 0, 0, 0.5));
   }
@@ -130,7 +130,7 @@
 }
 
 .stats-header {
-  @apply bg-gradient-to-r from-gray-400 to-gray-200 rounded-t-xl h-[40px] xl:h-[90px] lg:h-[70px] md:h-[50px] flex items-center justify-center;
+  @apply bg-gradient-to-b from-gray-400 to-gray-200 rounded-tl-xl h-[40px] xl:h-[90px] lg:h-[70px] md:h-[50px] flex items-center justify-center;
   
 
   & h3 {
@@ -147,6 +147,14 @@
 
 .stats-container {
   @apply bg-white rounded-xl overflow-y-auto shadow-xl;
+}
+
+.stats-info {
+  @apply text-sm font-semibold;
+}
+
+.stats-style {
+  @apply border border-gray-300 px-3 py-2 text-center;
 }
 
 }
