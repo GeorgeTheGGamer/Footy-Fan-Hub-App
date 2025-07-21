@@ -60,7 +60,7 @@ const FixtureCard = ({fixture}) => {
             className="w-12 h-12 object-contain mr-3"
           />
           <div className="flex-1">
-            <h3 className="font-semibold text-gray-800">{strHomeTeam}</h3>
+            <h3 className="font-semibold text-gray-800 text-[12px] lg:text-lg">{strHomeTeam}</h3>
             <p className="text-xs text-gray-500">Home</p>
           </div>
         </div>
@@ -87,7 +87,7 @@ const FixtureCard = ({fixture}) => {
         {/* Away Team */}
         <div className="flex items-center flex-1 justify-end">
           <div className="flex-1 text-right">
-            <h3 className="font-semibold text-gray-800">{strAwayTeam}</h3>
+            <h3 className="font-semibold text-gray-800 text-[12px] lg:text-lg">{strAwayTeam}</h3>
             <p className="text-xs text-gray-500">Away</p>
           </div>
           <img 
