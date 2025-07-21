@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import Spinner from './Spinner'
+import Newscard from './Newscard'
 
 const API_BASE_URL = `https://newsapi.org/v2/everything`
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY
 
-// Removed Content-Type header - not needed for GET requests
 const API_OPTIONS = {
   method: 'GET'
 }
@@ -13,13 +13,15 @@ const Newsfeed = ({teamName}) => {
 
   const [isLoading, setisLoading] = useState(false)
   const [errorMessage, seterrorMessage] = useState('')
+  const [newsList, setnewsList] = useState([])
 
   const fetchNews = async () => {
     setisLoading(true)
     seterrorMessage('')
 
     try {
-        const endpoint = `${API_BASE_URL}?q=${teamName}&apiKey=${API_KEY}`
+        const query = `${teamName} Football Club`
+        const endpoint = `${API_BASE_URL}?q=${query}&apiKey=${API_KEY}`
         const response = await fetch(endpoint, API_OPTIONS)
 
         if (!response.ok) {
@@ -28,6 +30,7 @@ const Newsfeed = ({teamName}) => {
 
         const data = await response.json();
         console.log(data)
+        setnewsList(data.articles || [])
         
     } catch (error) {
         console.log(`Error Fetching News: ${error}`)
@@ -39,10 +42,10 @@ const Newsfeed = ({teamName}) => {
   }
 
   useEffect(() => {
-    if (teamName) { // Only fetch if teamName exists
+    if (teamName) { 
       fetchNews()
     }
-  }, [teamName]) // Added teamName as dependency
+  }, [teamName])
 
   return (
     <main className="stats-container">
@@ -50,8 +53,19 @@ const Newsfeed = ({teamName}) => {
         <h3>Recent News</h3>
       </header>
       <section>
-        {isLoading && <Spinner />}
-        {errorMessage && <p>{errorMessage}</p>}
+        {isLoading ? (
+          <Spinner />
+        ) : errorMessage ? (
+          <p className='text-red-600'>{errorMessage}</p>
+        ) : (
+          newsList.length > 0 ? (
+            newsList.map((article, index) => (
+              <Newscard key={index} article={article} />
+            ))
+          ) : (
+            <p className='text-red-600'>No news found for {teamName}</p>
+          )
+        )}
       </section>
     </main>
   )
