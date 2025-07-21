@@ -33,11 +33,11 @@ const SeasonStats = ({team}) => {
         )}
 
         {/* Horizontal Stats Table */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto rounded-lg hover:scale-105 m-2">
           <table className="w-full border-collapse bg-white rounded-lg shadow">
             <thead>
               <tr className="bg-gray-100">
-                <th className="stats-style stats-info">Pos</th>
+                <th className="stats-style stats-info">P</th>
                 <th className="stats-style stats-info">MP</th>
                 <th className="stats-style stats-info">W</th>
                 <th className="stats-style stats-info">D</th>
@@ -63,7 +63,7 @@ const SeasonStats = ({team}) => {
                 }`}>
                   {intGoalDifference > 0 ? '+' : ''}{intGoalDifference}
                 </td>
-                <td className="stats-style text-blue-600 font-bold text-lg">{intPoints}</td>
+                <td className="stats-style text-blue-600 font-bold">{intPoints}</td>
               </tr>
             </tbody>
           </table>
