@@ -17,7 +17,7 @@ const Newscard = ({article}) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 mb-4 overflow-hidden m-8">
+    <div className="bg-white rounded-lg shadow-md hover:shadow-lg hover:scale-103 transition-shadow duration-300 mb-4 overflow-hidden m-8">
       {/* Image */}
       {article.urlToImage && (
         <img 
