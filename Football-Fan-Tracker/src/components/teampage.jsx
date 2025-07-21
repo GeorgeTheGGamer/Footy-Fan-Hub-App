@@ -14,12 +14,13 @@ const Teampage = () => {
     navigate(`/`)   
   }
 
+  
 
   // useLocation hook allow access to state object at url location 
   const location = useLocation()
   const team = location.state?.team
   // Deconstruct team object for easier use of variables
-  const { dateUpdated, idLeague, idStanding, idTeam, intDraw, intGoalDifference, intGoalsAgainst, intGoalsFor, intLoss, intPlayed, intPoints, intRank, intWin, strBadge, strDescription, strForm, strLeague, strSeason, strTeam } = team;
+  const { idTeam, strBadge, strTeam } = team;
 
   return (
       <main>
@@ -32,7 +33,7 @@ const Teampage = () => {
           <SeasonStats team={team}/>
           <Fixturelist teamId={idTeam}/>
           <Playerviewer teamId={idTeam}/>
-          <Newsfeed />
+          <Newsfeed teamName={strTeam}/>
         </section>
       </main>
   )
