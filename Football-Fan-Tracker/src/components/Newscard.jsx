@@ -29,7 +29,7 @@ const Newscard = ({article}) => {
       )}
       
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6"> 
         {/* Source and Date */}
         <div className="flex justify-between items-center mb-3">
           <span className="text-sm font-medium text-blue-600">
