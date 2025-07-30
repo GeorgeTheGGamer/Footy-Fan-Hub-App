@@ -21,7 +21,11 @@ const Form = ({route, method}) => {
 
         try {
             // Pass in the username and password for the login and register end point
-            const response = await api.post(route, {Username, Password})
+            const response = await api.post(route, {
+            username: Username,  // lowercase key
+            password: Password   // lowercase key
+        })
+
 
             if (method === "login") {
                 localStorage.setItem(ACCESS_TOKEN, response.data.access)

@@ -21,7 +21,7 @@ const Login = () => {
          Homepage
        </button>
      </div>
-     <Form route="/api/user/login/" method="login"></Form>
+     <Form route="/api/token/" method="login"></Form>
    </div>
  )
 }
