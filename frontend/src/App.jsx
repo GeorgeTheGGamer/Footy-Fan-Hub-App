@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Homepage from './components/Homepage'
-import SignedInHomepage from './components/SignedInHomepage'
+import Homepage from './pages/Homepage'
+import SignedInHomepage from './pages/SignedInHomepage'
 import Teampage from './components/Teampage'
 import Register from "./pages/Register"
 import Login from "./pages/Login"

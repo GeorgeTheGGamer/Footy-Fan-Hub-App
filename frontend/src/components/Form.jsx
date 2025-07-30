@@ -44,7 +44,7 @@ const Form = ({route, method}) => {
 
     // Dynamic Form that changes name
 
-    <div>
+    <div className='form-style'>
         <form onSubmit={handleSubmit}>
             <h1>{name}</h1>
             {/* The username/password state changes based on all the text input */}
