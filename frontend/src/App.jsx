@@ -23,9 +23,9 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route  path='/' element={<Homepage />}/>
-        <Route path="/Homepage" element={<SignedInHomepage />} />
+        <Route path="/Homepage" element={<ProtectedRoute><SignedInHomepage /></ProtectedRoute>} />
         {/* Route parameter for specific team id */}
-        <Route path='/team/:id' element={<Teampage />}/>
+        <Route path='/team/:id' element={<ProtectedRoute><Teampage /></ProtectedRoute>}/>
         <Route path="/Register" element={<RegisterAndLogout />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Logout" element={<Logout />} />

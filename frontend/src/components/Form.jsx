@@ -11,6 +11,7 @@ const Form = ({route, method}) => {
     const [Password, setPassword] = useState("")
     const [Loading, setLoading] = useState(false)
     const navigate = useNavigate()
+    
 
     const name = method === 'login' ? "Login" : "Register"
 
@@ -49,7 +50,7 @@ const Form = ({route, method}) => {
             <h1>{name}</h1>
             {/* The username/password state changes based on all the text input */}
             <input type="text" value={Username} onChange={(e) => setUsername(e.target.value)} placeholder='Username'  />
-            <input type="text" value={Password} onChange={(e) => setPassword(e.target.value)} placeholder='Password'  />
+            <input type="password" value={Password} onChange={(e) => setPassword(e.target.value)} placeholder='Password'  />
             <button type='submit'>{name}</button>
 
         </form>
