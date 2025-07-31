@@ -30,7 +30,7 @@ const Form = ({route, method}) => {
                 
                 try {
                     // Now check for saved team (after authentication)
-                    const teamUserData = await api.get("/api/team/")
+                    const teamUserData = await api.get("api/team/get/")
                     const team = teamUserData.data.team_data  // Extract team object from team_data
                     
                     if (team && team.idTeam) {

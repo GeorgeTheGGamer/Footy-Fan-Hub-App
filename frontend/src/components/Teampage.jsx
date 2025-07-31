@@ -27,7 +27,7 @@ const Teampage = () => {
         <header className='team-banner'>
           <img src={strBadge} alt="Badge Image" />
           <h1>{strTeam}</h1>
-          <button onClick={handleClick}>HOMEPAGE</button>
+          <button onClick={handleClick}>Back</button>
         </header>
         <section className='content-container'>
           <SeasonStats team={team}/>
