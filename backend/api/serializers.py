@@ -22,4 +22,4 @@ class UserSerializer(serializers.ModelSerializer):
 class UserTeamChoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserTeamChoice
-        fields = ["team_id","team_name"]
+        fields = ["team_data"]

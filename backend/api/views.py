@@ -25,8 +25,7 @@ class UserTeamChoiceView(generics.CreateAPIView):
         UserTeamChoice.objects.update_or_create(
             user=self.request.user,
             defaults= {
-                'team_id' : serializer.validated_data['team_id'],
-                'team_name': serializer.validated_data['team_name']
+                'team_data' : serializer.validated_data['team_data']
             }
         )
 
