@@ -15,17 +15,21 @@ A full-stack football tracking application that allows fans to follow their favo
 ## 📱 Screenshots
 
 ### Welcome Screen
-Beautiful hero section with football stadium background and gradient overlays.
-![Alt text](./readme_images/homepage.png)
+Beautiful football with football stadium background and gradient overlays. Reactive Buttons
+![Alt text](./readme_images/basepage.png)
+![Alt text](./readme_images/basepagebutton.png)
 
 ### User Authentication
 Secure login and registration system with protected routes.
-![Alt text](./readme_images/login.png)
 ![Alt text](./readme_images/register.png)
+![Alt text](./readme_images/login.png)
+
+### User Homepage
+![Alt text](./readme_images/UserHomepage.png)
 
 ### Team Selection
 Modal overlay with searchable team cards featuring official club badges.
-![Alt text](./readme_images/teamviewer.png)
+![Alt text](./readme_images/teamchoice.png)
 
 ### Team Dashboard  
 Comprehensive view showing season stats, fixtures, players, and latest news.
@@ -36,6 +40,9 @@ Comprehensive view showing season stats, fixtures, players, and latest news.
 ![Alt text](./readme_images/players.png)
 ![Alt text](./readme_images/recentnews.png)
 ![Alt text](./readme_images/newscard.png)
+
+### 404 Page Not Found
+![Alt text](./readme_images/404pagenotfound.png)
 
 ## ✨ Features
 
