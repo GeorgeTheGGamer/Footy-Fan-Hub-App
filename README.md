@@ -10,6 +10,7 @@ A full-stack football tracking application that allows fans to follow their favo
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![Axios](https://img.shields.io/badge/axios-671ddf?&style=for-the-badge&logo=axios&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 
 ## 📱 Screenshots
 
@@ -500,7 +501,10 @@ python-decouple
   "react-router": "^7.6.3",
   "react-router-dom": "^7.6.3",
   "react-use": "^17.6.0",
-  "tailwindcss": "^4.1.11"
+  "axios": "^1.11.0",
+  "jwt-decode": "^4.0.0",
+  "tailwindcss": "^4.1.11",
+  "@tailwindcss/vite": "^4.1.11"
 }
 ```
 
