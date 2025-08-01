@@ -15,7 +15,7 @@ A full-stack football tracking application that allows fans to follow their favo
 ## 📱 Screenshots
 
 ### Welcome Screen
-Beautiful football with football stadium background and gradient overlays. Reactive Buttons
+Beautiful football background and gradient overlays. Reactive Buttons
 ![Alt text](./readme_images/basepage.png)
 ![Alt text](./readme_images/basepagebutton.png)
 
