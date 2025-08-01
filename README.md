@@ -25,13 +25,16 @@ Secure login and registration system with protected routes.
 ![Alt text](./readme_images/login.png)
 
 ### User Homepage
+Username updates based on User
 ![Alt text](./readme_images/UserHomepage.png)
 
 ### Team Selection
 Modal overlay with searchable team cards featuring official club badges.
+Team choice is saved in a database
 ![Alt text](./readme_images/teamchoice.png)
 
 ### Team Dashboard  
+Once logged in if there is no team choice then taken to the User Homepage. If there is a team choice then taken directly to the team dashboard
 Comprehensive view showing season stats, fixtures, players, and latest news.
 ![Alt text](./readme_images/teampage.png)
 ![Alt text](./readme_images/seasonstats.png)
@@ -58,7 +61,7 @@ Comprehensive view showing season stats, fixtures, players, and latest news.
 - **🔍 Smart Team Search** - Debounced search with real-time filtering
 - **📊 Comprehensive Team Stats** - Season statistics with visual indicators (W/L/D circles)
 - **📅 Live Fixtures** - Past and upcoming matches with detailed information
-- **👥 Player Profiles** - Team roster with player cards and images
+- **👥 Live Player Profiles** - Team roster with player cards and images
 - **📰 Latest News** - Real-time football news filtered by selected team
 - **🔄 Dynamic API Calls** - All endpoints update based on your chosen team ID
 
@@ -105,14 +108,14 @@ Comprehensive view showing season stats, fixtures, players, and latest news.
 
 ### Backend Setup (Django)
 
-1. **Navigate to backend directory**
+1. **Navigate to directory**
    ```bash
-   cd backend
+   cd INSERTFOOTYFANHUBDIRECTORY
    ```
 
 2. **Create virtual environment**
    ```bash
-   python -m venv venv
+   python -m venv env
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
@@ -121,26 +124,14 @@ Comprehensive view showing season stats, fixtures, players, and latest news.
    pip install -r requirements.txt
    ```
 
-4. **Set up environment variables**
-   Create a `.env` file in the backend directory:
-   ```env
-   SECRET_KEY=your_django_secret_key_here
-   DEBUG=True
-   ALLOWED_HOSTS=localhost,127.0.0.1
-   ```
-
-5. **Run migrations**
+4. **Run migrations**
    ```bash
+   cd backend
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-6. **Create superuser (optional)**
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-7. **Start Django development server**
+5. **Start Django development server**
    ```bash
    python manage.py runserver
    ```
@@ -149,7 +140,7 @@ Comprehensive view showing season stats, fixtures, players, and latest news.
 
 1. **Navigate to frontend directory**
    ```bash
-   cd frontend
+   cd INSERTFOOTYFANHUBDIRECTORY/frontend
    ```
 
 2. **Install dependencies**
@@ -162,7 +153,7 @@ Comprehensive view showing season stats, fixtures, players, and latest news.
    ```env
    VITE_SPORTSDB_API_KEY=your_sportsdb_api_key_here
    VITE_NEWS_API_KEY=your_news_api_key_here
-   VITE_API_BASE_URL=http://localhost:8000/api
+   VITE_API_BASE_URL=http://localhost:8000/api (Or deployed URL)
    ```
 
 4. **Start the development server**
@@ -171,7 +162,7 @@ Comprehensive view showing season stats, fixtures, players, and latest news.
    ```
 
 5. **Open your browser**
-   Navigate to `http://localhost:5173` to view the application.
+   Navigate to `http://localhost:5173` to view the application
 
 ## 🏗️ Project Structure
 
@@ -248,19 +239,7 @@ Footy-Fan-Hub-App/
 └── requirements.txt           # Python dependencies (root)
 ```
 
-## 🔐 Authentication System
-
-### User Model & Team Persistence
-The application includes a custom user system that stores team preferences:
-
-```python
-# models.py
-class TeamChoice(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    team_data = models.JSONField()  # Stores complete team object
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-```
+## 🔐 Authentication System and Team Database
 
 ### API Endpoints
 - **POST /api/user/register/** - User registration
@@ -269,27 +248,6 @@ class TeamChoice(models.Model):
 - **GET /api/user/details** - Retrieve authenticated user information
 - **POST /api/team/** - Save user's team selection
 - **GET /api/team/get/** - Retrieve user's saved team choice
-
-### Protected Routes
-Frontend routes are protected using the `ProtectedRoute` component:
-
-```jsx
-// App.jsx routing structure
-<Routes>
-  <Route path="/login" element={<Login />} />
-  <Route path="/register" element={<Register />} />
-  <Route path="/" element={
-    <ProtectedRoute>
-      <SignedInHomepage />
-    </ProtectedRoute>
-  } />
-  <Route path="/team/:teamId" element={
-    <ProtectedRoute>
-      <Teampage />
-    </ProtectedRoute>
-  } />
-</Routes>
-```
 
 ## ⚽ Dynamic Team Selection System
 
@@ -307,141 +265,8 @@ Frontend routes are protected using the `ProtectedRoute` component:
    - Frontend state management with React Router
    - Seamless navigation between authenticated pages
 
-### Team-Specific Data Fetching
-
-```javascript
-// Example: Dynamic API calls based on authenticated user's team
-const fetchUserTeamData = async () => {
-  // Get user's saved team from Django backend
-  const accessToken = localStorage.getItem('accessToken')
-  const userTeamResponse = await fetch('/api/team/get/', {
-    headers: { 'Authorization': `Bearer ${accessToken}` }
-  })
-  
-  const teamData = await userTeamResponse.json()
-  const teamId = teamData.team_data.idTeam
-  
-  // Fetch team-specific data from sports API
-  const fixturesResponse = await fetch(
-    `${SPORTS_API_BASE}/eventslast.php?id=${teamId}`
-  )
-}
-```
-
-## 🔧 Key Features Implementation
-
-### User Authentication Flow
-```javascript
-// Login component with Django Simple JWT integration
-const handleLogin = async (credentials) => {
-  const response = await fetch('/api/token/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(credentials)
-  })
-  
-  if (response.ok) {
-    const { access, refresh } = await response.json()
-    localStorage.setItem('accessToken', access)
-    localStorage.setItem('refreshToken', refresh)
-    
-    // Check if user has saved team
-    const teamChoice = await fetchUserTeamChoice()
-    if (teamChoice) {
-      navigate(`/team/${teamChoice.team_data.idTeam}`)
-    } else {
-      navigate('/')
-    }
-  }
-}
-```
-
-### Protected Route Implementation
-```jsx
-const ProtectedRoute = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null)
-  
-  useEffect(() => {
-    const checkAuth = async () => {
-      const token = localStorage.getItem('accessToken')
-      if (!token) {
-        setIsAuthenticated(false)
-        return
-      }
-      
-      try {
-        const response = await fetch('/api/user/details', {
-          headers: { 'Authorization': `Bearer ${token}` }
-        })
-        
-        if (response.status === 401) {
-          // Try to refresh token
-          const refreshToken = localStorage.getItem('refreshToken')
-          const refreshResponse = await fetch('/api/token/refresh/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ refresh: refreshToken })
-          })
-          
-          if (refreshResponse.ok) {
-            const { access } = await refreshResponse.json()
-            localStorage.setItem('accessToken', access)
-            setIsAuthenticated(true)
-          } else {
-            setIsAuthenticated(false)
-          }
-        } else {
-          setIsAuthenticated(response.ok)
-        }
-      } catch {
-        setIsAuthenticated(false)
-      }
-    }
-    
-    checkAuth()
-  }, [])
-  
-  if (isAuthenticated === null) return <Spinner />
-  if (!isAuthenticated) return <Navigate to="/login" />
-  
-  return children
-}
-```
-
-### Team Persistence
-```javascript
-// Save team choice to Django backend
-const saveTeamChoice = async (teamData) => {
-  const accessToken = localStorage.getItem('accessToken')
-  await fetch('/api/team/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${accessToken}`
-    },
-    body: JSON.stringify({ team_data: teamData })
-  })
-}
-
-// Retrieve user's saved team
-const fetchUserTeamChoice = async () => {
-  const accessToken = localStorage.getItem('accessToken')
-  const response = await fetch('/api/team/get/', {
-    headers: { 'Authorization': `Bearer ${accessToken}` }
-  })
-  return response.ok ? await response.json() : null
-}
-```
-
 ## 🔒 Environment Variables
 
-### Backend (.env)
-```env
-SECRET_KEY=your_django_secret_key_here
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
-DATABASE_URL=sqlite:///db.sqlite3
-```
 
 ### Frontend (.env.local)
 ```env
@@ -493,11 +318,16 @@ npm run build
 
 ### Backend (requirements.txt)
 ```txt
-Django>=5.0.0
+asgiref
+Django
+django-cors-headers             
 djangorestframework
 djangorestframework-simplejwt
-django-cors-headers
-python-decouple
+PyJWT
+pytz
+sqlparse
+psycopg2-binary
+python-dotenv
 ```
 
 ### Frontend (package.json)
