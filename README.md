@@ -1,4 +1,4 @@
- Footy Fan Hub App ⚽
+# Footy Fan Hub App ⚽
 
 A full-stack football tracking application that allows fans to follow their favorite teams with real-time data, user authentication, and personalized experiences. Built with Django REST Framework backend and React frontend for optimal performance and scalability.
 
